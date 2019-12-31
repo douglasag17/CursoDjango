@@ -10,25 +10,19 @@
         <h1 id="titulo">
             Pagina Web Django
         </h1>
-        <ul id="barra">
-            <button>
-                <li> 
-                    <a href="/saludar"> Hola </a>
+        <nav id="barra">
+            <ul>
+                <li>
+                    <a href="/saludar">Hola</a>
                 </li>
-            </button>
-            
-            <button>
-                <li> 
-                    <a href="/despedir"> Adios </a>
+                <li>
+                    <a href="/despedir">Adios</a>
                 </li>
-            </button>
-
-            <button>
-                <li> 
-                    <a href="/darFecha"> Fecha </a>
+                <li>
+                    <a href="/darFecha">Fecha</a>
                 </li>
-            </button>
-        </ul>
+            </ul>
+        </nav>
 
         {% block content %}
         {% endblock %}
@@ -45,6 +39,7 @@
         list-style: none;
         text-transform: uppercase;
         text-align: center;
+        background-color: aliceblue;
     }
 
     #barra li{
