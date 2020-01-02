@@ -1,9 +1,11 @@
 from django.contrib import admin
+from gestionPedidos.models import Cliente, Articulo, Pedido
 
 # Register your models here.
 
-from .models import Clientes, Articulos, Pedidos
+class ClientesAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "direccion", "email")
 
-admin.site.register(Clientes)
-admin.site.register(Articulos)
-admin.site.register(Pedidos)
+admin.site.register(Cliente, ClientesAdmin)
+admin.site.register(Articulo)
+admin.site.register(Pedido)
