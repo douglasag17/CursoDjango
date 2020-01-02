@@ -1,19 +1,26 @@
-from django.contrib import admin
-from gestionPedidos.models import Cliente, Articulo, Pedido
+from django.db import models
 
-# Register your models here.
+# Create your models here.
+# Crear una clase por tabla
 
-class ClientesAdmin(admin.ModelAdmin):
-    list_display = ("nombre", "direccion", "email")
+class Cliente(models.Model):
+    nombre = models.CharField(max_length = 30)
+    direccion = models.CharField(max_length = 50)
+    email = models.EmailField(blank=True, null=True)
+    telefono = models.CharField(max_length = 7)
 
-class ArticulosAdmin(admin.ModelAdmin):
-    list_filter = ("seccion", )
+    def __str__(self):
+        return self.nombre
 
-class PedidosAdmin(admin.ModelAdmin):
-    list_display = ("numero", "fecha")
-    list_filter = ("fecha", )
-    date_hierarchy = "fecha"
+class Articulo(models.Model):
+    nombre = models.CharField(max_length = 30)
+    seccion = models.CharField(max_length = 20)
+    precio = models.IntegerField()
 
-admin.site.register(Cliente, ClientesAdmin)
-admin.site.register(Articulo, ArticulosAdmin)
-admin.site.register(Pedido, PedidosAdmin)
+    def __str__(self):
+        return "El nombre es %s, la seccion es %s, el precio es %s" % (self.nombre, self.seccion, self.precio)
+
+class Pedido(models.Model):
+    numero = models.IntegerField()
+    fecha = models.DateField()
+    entregado = models.BooleanField()
